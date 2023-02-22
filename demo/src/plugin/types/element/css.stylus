@@ -1,0 +1,348 @@
+/*4px圆角*/
+$border_radius = 4px
+
+/*边框颜色*/
+$border_color = #E0E0E0
+
+/*弹窗关闭按钮高亮色*/
+$dialog_close_highlight_bg = #D2D6E0
+$dialog_close_highlight_color = #fff
+
+/*弹窗头部背景色*/
+$dialog_header_bg = #EDEFF3
+
+/*表单字体颜色*/
+$form_label_color = #303133
+$form_content_color = #000
+
+/*表格颜色*/
+$table_th_color = #000
+$table_th_bg = #ebeef5
+$table_td_color = #000
+$table_highlight_bg = oldlace
+
+/*菜单配色*/
+$menu_color = #fff; // 默认字体颜色
+$menu_bgcolor = #942428; // 默认背景颜色
+$menu_active_color = #fff; // 高亮字体颜色
+$menu_active_bgcolor = #1888fc // 高亮背景色
+
+/*弹窗头部*/
+dialog_header_style() {
+  padding 10px 20px;
+  border-radius: $border_radius $border_radius 0 0;
+  background: $dialog_header_bg;
+  text-align: center;
+  height: 24px !important;
+  line-height: 24px !important;
+}
+
+/*弹窗头部title*/
+dialog_header_title_style() {
+  height 24px !important;
+  line-height: 24px !important;
+  font-size: 18px !important;
+  color: #303133;
+}
+
+/*弹窗头部关闭按钮*/
+dialog_header_close_btn_style() {
+  top 12px
+  &:hover {
+    >i {
+      background: $dialog_close_highlight_bg;
+      color: $dialog_close_highlight_color !important;
+      border-radius: $border_radius
+    }
+  }
+
+  >i {
+    padding: 3px
+  }
+}
+
+/*弹窗内容区域*/
+dialog_body_style() {
+  // padding 0 !important
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  overflow auto;
+}
+
+/*弹窗底部*/
+dialog_footer-style() {
+  border-top 1px solid $border_color;
+  padding 15px 20px;
+  text-align: center
+}
+
+/* 对话框样式调整 */
+.el-dialog {
+  width: 500px
+  margin: 0 !important;
+  border-radius: $border_radius;
+  position absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  top: 120px;
+}
+
+.el-dialog__header {
+  dialog_header_style()
+}
+
+.el-dialog__headerbtn {
+  dialog_header_close_btn_style()
+}
+
+.el-dialog__title {
+  dialog_header_title_style()
+}
+
+.el-dialog__body {
+  dialog_body_style()
+  /*弹窗样式*/
+  .dialog-body{
+    box-sizing border-box
+    display: flex;
+    justify-content: center;
+    flex-direction: row;
+    >>> .el-form--inline .el-form-item{
+      &:nth-child(odd){
+        margin-right 80px
+      }
+      &:nth-child(even){
+        margin-right 0
+      }
+    }
+    .el-form-item__label{
+      // width 100px !important
+      // label左对齐，调整必填的样式
+      text-align: left
+      position relative
+      &:before{
+        position absolute
+        left: -8px;
+      }
+    }
+    .el-form-item__content{
+      margin-left 100px !important
+      width 300px
+      .el-select{
+        width 100%
+      }
+    }
+    .small{
+      .el-form-item__content{
+        width 200px
+      }
+    }
+    // 兼容ie下无法识别max-height，部分弹窗高度限制定值
+    &.limitHeight{
+      height 360px
+    }
+  }
+
+  /*根据屏幕分辨率，自动适配弹窗最大高度*/
+  @media screen and (min-width:1601px){
+    .dialog-body{
+      max-height 450px
+    }
+  }
+
+}
+
+.el-dialog__footer {
+  dialog_footer-style()
+}
+
+/*Table*/
+.el-table {
+  th, td {
+    padding: 8px 0;
+  }
+  th {
+    color: $table_th_color;
+    font-weight 900;
+    background-color: $table_th_bg !important; // 表头颜色强制定义，否则新版本变白
+    // 表头增加高度限制，保证表头不换行
+    > .cell {
+      height: 23px;
+    }
+  }
+
+  td {
+    color: $table_td_color
+  }
+}
+
+// 高亮当前行
+.el-table__body tr.current-row>td {
+  background: $table_highlight_bg !important
+}
+
+/*MessageBox 弹框*/
+.el-message-box {
+  padding-bottom: 0
+}
+
+.el-message-box__header {
+  dialog_header_style()
+}
+
+.el-message-box__title {
+  dialog_header_title_style()
+}
+
+.el-message-box__content {
+  dialog_body_style();
+  padding: 30px 40px !important;
+  word-break: break-all; // 处理内容过长，换行处理
+}
+
+.el-message-box__headerbtn {
+  dialog_header_close_btn_style()
+}
+
+.el-message-box__btns {
+  dialog_footer-style()
+  // 确定按钮靠左
+  display: flex;
+  flex-direction: row-reverse;
+  justify-content: center;
+  .el-button+.el-button {
+    margin-right 10px
+  }
+}
+
+/*Form*/
+
+/* 修复input number的宽度 */
+.el-input-number .el-input {
+  width: auto;
+}
+
+/*树结构多选框样式修复*/
+.el-tree-node__content > .el-checkbox{
+  margin-right 8px;
+}
+
+/*Menu*/
+.el-menu {
+  overflow-x: hidden
+  overflow-y: auto
+  border-right: 0;
+  background: $menu_bgcolor;
+  // 定制菜单滚动条样式
+  /*轨道样式*/
+  &::-webkit-scrollbar-track {
+    box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+    background-color: #252c34;
+  }
+  /*滚动条的样式*/
+  &::-webkit-scrollbar-thumb {
+    background-color: #6e7480;
+    border-radius: 4px;
+    box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+  }
+  /*滚动条的hover样式*/
+  &::-webkit-scrollbar-thumb:hover {
+    background-color: #9f9f9f;
+  }
+}
+
+.el-menu--collapse{
+  width 50px
+}
+
+/*高亮*/
+.el-menu-item, .el-submenu__title, .el-submenu .el-menu-item {
+  background: $menu_bgcolor;
+  color: $menu_color;
+  height: 40px
+  line-height: 40px
+  i {
+    color: $menu_color;
+  }
+
+  &:hover, &:focus, +.is-active {
+    background: $menu_active_bgcolor
+    color: $menu_active_color !important
+    i {
+      color: $menu_active_color
+    }
+  }
+}
+
+/*悬浮菜单内部滚动*/
+.el-menu--vertical {
+  max-height: 90%;
+  overflow-y: auto;
+}
+
+/*button按钮样式*/
+.el-button--text{
+  padding: 0
+}
+
+.el-button--small{
+  font-size: 14px;
+  padding: 8px 15px;
+}
+
+// 解决级联下拉多选ie兼容
+.el-cascader__tags .el-tag>span {
+  flex: auto;
+}
+
+.el-cascader-node__postfix {
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+/*修复IE11输入框尾部关闭按钮无法点击问题*/
+.el-input__suffix {
+  display flex
+}
+
+.el-pagination {
+  padding-top 10px
+}
+
+// 按钮置灰
+.el-button--primary.is-disabled {
+  color: #bcbec2;
+  background-color: #f4f4f5;
+  border-color: #e9e9eb;
+  &:active, &:focus, &:hover {
+    color: #bcbec2;
+    background-color: #f4f4f5;
+    border-color: #e9e9eb;
+  }
+}
+
+// 修改placeholder颜色
+::-webkit-input-placeholder, ::-moz-placeholder, :-ms-input-placeholder, ::-ms-input-placeholder, ::placeholder  {
+  color: #909399 !important;
+}
+
+// 折叠面板样式
+.el-collapse-item__header {
+  height 30px;
+  font-size: 14px;
+  background: #909399;
+  color: #fff;
+  // background: #d8d8d8; // 灰色
+  // background: rgba(42, 112, 189, .25); // 蓝色25%
+  // background: rgba(42, 112, 189, .3); // 蓝色30%配蓝标
+  // background: rgba(110, 179, 255, .13); // 浅蓝色13%配蓝标
+  // color: #2D2D2D !important;
+  font-weight 700
+  padding-left: 10px;
+  margin-bottom 3px;
+  // border-left: 8px solid #6eb3ff; // 蓝色小标签
+}
+.el-collapse-item__content {
+  padding-bottom 5px
+}
