@@ -75,7 +75,7 @@ export default {
     dialogView
   },
   created () {
-    this.listApi = this.$apis.ccweb.selectNoticeByPage
+    // this.listApi = this.$apis.ccweb.selectNoticeByPage
     this.refreshTable()
   },
   methods: {

@@ -9,7 +9,15 @@ import './plugin/index'
 import './common/index'
 import './css/main.css'
 import './mock' // 加载mock数据
-
+// 封装 axios
+import './utils/axios'
+// 加载公共方法
+import utils from './utils/utils.js'
+// 注册按钮权限全局方法
+import { checkFuncId } from '@/utils/getFuncId'
+// 使用this.$utils 即可使用
+Vue.prototype.$utils = utils
+Vue.prototype.$checkFuncId = checkFuncId
 Vue.config.productionTip = false
 
 /* eslint-disable no-new */
