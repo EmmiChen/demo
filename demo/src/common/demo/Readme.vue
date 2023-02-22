@@ -1,6 +1,6 @@
 <template>
   <div class="ms-doc">
-    <h1>纪辰小家开发指南</h1>
+    <h1>纪辰demo开发指南</h1>
     <section>
       <p>说明:组件库demo</p>
     </section>
