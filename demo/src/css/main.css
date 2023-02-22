@@ -1,0 +1,69 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+
+button,
+input,
+select,
+textarea {
+  line-height: normal;
+}
+
+html,
+body,
+#app,
+.wrapper {
+  width: 100%;
+  height: 100%;
+  overflow-x: hidden;
+  overflow-y: auto;
+}
+
+body {
+  font-family: "Helvetica Neue", Helvetica, "microsoft yahei", arial, STHeiTi, sans-serif;
+  font-size: 14px;
+}
+
+a {
+  text-decoration: none
+}
+
+/*富文本，最小高度300px*/
+.ql-container {
+  min-height: 300px;
+}
+
+/* 滚动条 */
+::-webkit-scrollbar {
+  width: 8px; /*滚动条的宽度*/
+  height: 8px; /*滚动条的高度*/
+}
+/*轨道样式*/
+::-webkit-scrollbar-track {
+  box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+  background-color: #F5F5F5;
+}
+/*滚动条的样式*/
+::-webkit-scrollbar-thumb {
+  background-color: #ccc;
+  border-radius: 4px;
+  box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+}
+/*滚动条的hover样式*/
+::-webkit-scrollbar-thumb:hover {
+  background-color: #9f9f9f;
+}
+
+/*tab标签高亮铯*/
+.router-tab__contextmenu-item:hover{
+  color: #409eff;
+}
+
+/*红字*/
+.color-red {
+  color: red
+}
+.color-red .el-input__inner {
+  color: red
+}

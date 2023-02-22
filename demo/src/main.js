@@ -5,6 +5,10 @@ import App from './App'
 import router from './router'
 // 引入公共方法
 import './plugin/index'
+// 全局注册组件
+import './common/index'
+import './css/main.css'
+import './mock' // 加载mock数据
 
 Vue.config.productionTip = false
 
